@@ -1,0 +1,1904 @@
+openapi: 3.0.3
+info:
+  title: Loan System API GATEWAY
+  description: Swagger document for API Gateway Endpoint
+  version: 1.0.0
+  contact: {}
+servers:
+  - url: http://localhost:3000
+    description: Development server
+components:
+  securitySchemes:
+    JWT-auth:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http
+      name: JWT
+      description: Enter JWT token
+      in: header
+      
+paths:
+  /api/v1/borrower:
+    get:
+      summary: Get all borrowers
+      description: Get all borrowers
+      operationId: getAllBorrowers
+      responses:
+        '200':
+          description: Success
+          headers:
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: >-
+                  default-src 'self';base-uri 'self';font-src 'self' https:
+                  data:;form-action 'self';frame-ancestors 'self';img-src 'self'
+                  data:;object-src 'none';script-src 'self';script-src-attr
+                  'none';style-src 'self' https:
+                  'unsafe-inline';upgrade-insecure-requests
+            Cross-Origin-Opener-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Cross-Origin-Resource-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Origin-Agent-Cluster:
+              schema:
+                type: string
+                example: '?1'
+            Referrer-Policy:
+              schema:
+                type: string
+                example: no-referrer
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=15552000; includeSubDomains
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-DNS-Prefetch-Control:
+              schema:
+                type: string
+                example: 'off'
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            X-RateLimit-Limit:
+              schema:
+                type: string
+                example: '5'
+            X-RateLimit-Remaining:
+              schema:
+                type: string
+                example: '4'
+            X-RateLimit-Reset:
+              schema:
+                type: string
+                example: '1708308800'
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: '0'
+            connection:
+              schema:
+                type: string
+                example: close
+            content-length:
+              schema:
+                type: string
+                example: '238'
+            date:
+              schema:
+                type: string
+                example: Mon, 19 Feb 2024 01:58:19 GMT
+            etag:
+              schema:
+                type: string
+                example: W/"ee-Ypwu3IV3zbi1zdSfCZEymS4kYGQ"
+            x-powered-by:
+              schema:
+                type: string
+                example: Express
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        CCCD:
+                          type: string
+                          example: '65434234442'
+                        accountId:
+                          type: number
+                          example: 2
+                        address:
+                          type: string
+                          example: UIT
+                        full_name:
+                          type: string
+                          example: Hà Phú Thịnh
+                        id:
+                          type: number
+                          example: 1
+                        income:
+                          type: string
+                          example: '12000000'
+                        job_title:
+                          type: string
+                          example: IT
+                        outcome:
+                          type: string
+                          example: '10000000'
+                        phone_number:
+                          type: string
+                          example: '039123123'
+                    example:
+                      - CCCD: '65434234442'
+                        accountId: 2
+                        address: UIT
+                        full_name: Hà Phú Thịnh
+                        id: 1
+                        income: '12000000'
+                        job_title: IT
+                        outcome: '10000000'
+                        phone_number: '039123123'
+                  message:
+                    type: string
+                    example: Done read all lender
+                  status:
+                    type: string
+                    example: success
+              examples:
+                Success:
+                  value:
+                    data:
+                      - CCCD: '65434234442'
+                        accountId: 2
+                        address: UIT
+                        full_name: Hà Phú Thịnh
+                        id: 1
+                        income: '12000000'
+                        job_title: IT
+                        outcome: '10000000'
+                        phone_number: '039123123'
+                    message: Done read all lender
+                    status: success
+      security:
+        - JWT-auth: []
+      tags:
+        - Loan Service/Borrowers
+    post:
+      summary: CREATE
+      description: CREATE
+      operationId: create
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                CCCD:
+                  type: string
+                  example: '65434234442'
+                address:
+                  type: string
+                  example: UIT
+                full_name:
+                  type: string
+                  example: Trần Văn Xuân
+                income:
+                  type: string
+                  example: '12000000'
+                job_title:
+                  type: string
+                  example: IT
+                outcome:
+                  type: string
+                  example: '10000000'
+                password:
+                  type: string
+                  example: '@1Haphu'
+                phone_number:
+                  type: string
+                  example: '039123123'
+                username:
+                  type: string
+                  example: tranvanxuan
+            example:
+              CCCD: '65434234442'
+              address: UIT
+              full_name: Trần Văn Xuân
+              income: '12000000'
+              job_title: IT
+              outcome: '10000000'
+              password: '@1Haphu'
+              phone_number: '039123123'
+              username: tranvanxuan
+      responses:
+        '200':
+          description: Success
+          headers:
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: >-
+                  default-src 'self';base-uri 'self';font-src 'self' https:
+                  data:;form-action 'self';frame-ancestors 'self';img-src 'self'
+                  data:;object-src 'none';script-src 'self';script-src-attr
+                  'none';style-src 'self' https:
+                  'unsafe-inline';upgrade-insecure-requests
+            Cross-Origin-Opener-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Cross-Origin-Resource-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Origin-Agent-Cluster:
+              schema:
+                type: string
+                example: '?1'
+            Referrer-Policy:
+              schema:
+                type: string
+                example: no-referrer
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=15552000; includeSubDomains
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-DNS-Prefetch-Control:
+              schema:
+                type: string
+                example: 'off'
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            X-RateLimit-Limit:
+              schema:
+                type: string
+                example: '5'
+            X-RateLimit-Remaining:
+              schema:
+                type: string
+                example: '2'
+            X-RateLimit-Reset:
+              schema:
+                type: string
+                example: '1708308800'
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: '0'
+            connection:
+              schema:
+                type: string
+                example: close
+            content-length:
+              schema:
+                type: string
+                example: '237'
+            date:
+              schema:
+                type: string
+                example: Mon, 19 Feb 2024 01:59:08 GMT
+            etag:
+              schema:
+                type: string
+                example: W/"ed-KsygaNun1temLN4PKZ8PhJPJCz8"
+            x-powered-by:
+              schema:
+                type: string
+                example: Express
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      CCCD:
+                        type: string
+                        example: '65434234442'
+                      accountId:
+                        type: number
+                        example: 18
+                      address:
+                        type: string
+                        example: UIT
+                      full_name:
+                        type: string
+                        example: Hà Phú Thịnh
+                      id:
+                        type: number
+                        example: 2
+                      income:
+                        type: string
+                        example: '12000000'
+                      job_title:
+                        type: string
+                        example: IT
+                      outcome:
+                        type: string
+                        example: '10000000'
+                      phone_number:
+                        type: string
+                        example: '039123123'
+                  message:
+                    type: string
+                    example: Done create borrower
+                  status:
+                    type: string
+                    example: success
+              examples:
+                Success:
+                  value:
+                    data:
+                      CCCD: '65434234442'
+                      accountId: 18
+                      address: UIT
+                      full_name: Hà Phú Thịnh
+                      id: 2
+                      income: '12000000'
+                      job_title: IT
+                      outcome: '10000000'
+                      phone_number: '039123123'
+                    message: Done create borrower
+                    status: success
+        '500':
+          description: Username exists
+          headers:
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: >-
+                  default-src 'self';base-uri 'self';font-src 'self' https:
+                  data:;form-action 'self';frame-ancestors 'self';img-src 'self'
+                  data:;object-src 'none';script-src 'self';script-src-attr
+                  'none';style-src 'self' https:
+                  'unsafe-inline';upgrade-insecure-requests
+            Cross-Origin-Opener-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Cross-Origin-Resource-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Origin-Agent-Cluster:
+              schema:
+                type: string
+                example: '?1'
+            Referrer-Policy:
+              schema:
+                type: string
+                example: no-referrer
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=15552000; includeSubDomains
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-DNS-Prefetch-Control:
+              schema:
+                type: string
+                example: 'off'
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            X-RateLimit-Limit:
+              schema:
+                type: string
+                example: '5'
+            X-RateLimit-Remaining:
+              schema:
+                type: string
+                example: '3'
+            X-RateLimit-Reset:
+              schema:
+                type: string
+                example: '1708308800'
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: '0'
+            connection:
+              schema:
+                type: string
+                example: close
+            content-length:
+              schema:
+                type: string
+                example: '93'
+            date:
+              schema:
+                type: string
+                example: Mon, 19 Feb 2024 01:58:32 GMT
+            etag:
+              schema:
+                type: string
+                example: W/"5d-hiANbhsjgv2Hesp/4EeenuttW/c"
+            x-powered-by:
+              schema:
+                type: string
+                example: Express
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: 'Cant create borrowers: Username already exists'
+                  status:
+                    type: string
+                    example: fail
+                  statusCode:
+                    type: number
+                    example: 500
+              examples:
+                Username exists:
+                  value:
+                    message: 'Cant create borrowers: Username already exists'
+                    status: fail
+                    statusCode: 500
+      tags:
+        - Loan Service/Borrowers
+  /api/v1/contract:
+    get:
+      summary: GET ALL
+      description: GET ALL
+      operationId: getAll
+      responses:
+        '200':
+          description: ''
+      tags:
+        - Loan Service/Contracts
+    post:
+      summary: Create Loan Contract
+      description: Create Loan Contract
+      operationId: createLoanContract
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                borrowerId:
+                  type: string
+                  example: '2'
+                employeeId:
+                  type: string
+                  example: '10'
+                lenderId:
+                  type: string
+                  example: '12'
+                loanPackageId:
+                  type: string
+                  example: '1'
+                loan_method:
+                  type: string
+                  example: Thế chấp
+                money:
+                  type: string
+                  example: '10000000'
+                purpose:
+                  type: string
+                  example: Mua nhà
+            example:
+              borrowerId: '2'
+              employeeId: '10'
+              lenderId: '12'
+              loanPackageId: '1'
+              loan_method: Thế chấp
+              money: '10000000'
+              purpose: Mua nhà
+      responses:
+        '200':
+          description: Success
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Content-Length:
+              schema:
+                type: string
+                example: '236'
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: >-
+                  default-src 'self';base-uri 'self';font-src 'self' https:
+                  data:;form-action 'self';frame-ancestors 'self';img-src 'self'
+                  data:;object-src 'none';script-src 'self';script-src-attr
+                  'none';style-src 'self' https:
+                  'unsafe-inline';upgrade-insecure-requests
+            Cross-Origin-Opener-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Cross-Origin-Resource-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Date:
+              schema:
+                type: string
+                example: Thu, 25 Jan 2024 09:32:43 GMT
+            ETag:
+              schema:
+                type: string
+                example: W/"ec-CMeYJGG1KYu7N8mUAGO/go06F4A"
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+            Origin-Agent-Cluster:
+              schema:
+                type: string
+                example: '?1'
+            Referrer-Policy:
+              schema:
+                type: string
+                example: no-referrer
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=15552000; includeSubDomains
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-DNS-Prefetch-Control:
+              schema:
+                type: string
+                example: 'off'
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            X-RateLimit-Limit:
+              schema:
+                type: string
+                example: '5'
+            X-RateLimit-Remaining:
+              schema:
+                type: string
+                example: '0'
+            X-RateLimit-Reset:
+              schema:
+                type: string
+                example: '1706176037'
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: '0'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  borrowerId:
+                    type: number
+                    example: 2
+                  contract_status:
+                    type: string
+                    example: 'true'
+                  employeeId:
+                    type: number
+                    example: 9
+                  expire_date:
+                    type: string
+                    example: '2026-08-25T09:32:43.872Z'
+                  lenderId:
+                    type: number
+                    example: 1
+                  loanPackageId:
+                    type: number
+                    example: 1
+                  loan_date:
+                    type: string
+                    example: '2024-01-25T09:32:43.872Z'
+                  loan_method:
+                    type: string
+                    example: Thế chấp
+                  money:
+                    type: string
+                    example: '10000000'
+                  purpose:
+                    type: string
+                    example: Mua nhà
+              examples:
+                Success:
+                  value:
+                    borrowerId: 2
+                    contract_status: 'true'
+                    employeeId: 9
+                    expire_date: '2026-08-25T09:32:43.872Z'
+                    lenderId: 1
+                    loanPackageId: 1
+                    loan_date: '2024-01-25T09:32:43.872Z'
+                    loan_method: Thế chấp
+                    money: '10000000'
+                    purpose: Mua nhà
+      tags:
+        - Loan Service/Contracts
+  /api/v1/employees:
+    get:
+      summary: http://localhost:3000/api/v1/employees
+      description: http://localhost:3000/api/v1/employees
+      operationId: httpLocalhost3000ApiV1Employees1
+      responses:
+        '200':
+          description: Success
+          headers:
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: >-
+                  default-src 'self';base-uri 'self';font-src 'self' https:
+                  data:;form-action 'self';frame-ancestors 'self';img-src 'self'
+                  data:;object-src 'none';script-src 'self';script-src-attr
+                  'none';style-src 'self' https:
+                  'unsafe-inline';upgrade-insecure-requests
+            Cross-Origin-Opener-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Cross-Origin-Resource-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Origin-Agent-Cluster:
+              schema:
+                type: string
+                example: '?1'
+            Referrer-Policy:
+              schema:
+                type: string
+                example: no-referrer
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=15552000; includeSubDomains
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-DNS-Prefetch-Control:
+              schema:
+                type: string
+                example: 'off'
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            X-RateLimit-Limit:
+              schema:
+                type: string
+                example: '5'
+            X-RateLimit-Remaining:
+              schema:
+                type: string
+                example: '0'
+            X-RateLimit-Reset:
+              schema:
+                type: string
+                example: '1708308614'
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: '0'
+            connection:
+              schema:
+                type: string
+                example: close
+            content-length:
+              schema:
+                type: string
+                example: '656'
+            date:
+              schema:
+                type: string
+                example: Mon, 19 Feb 2024 01:56:07 GMT
+            etag:
+              schema:
+                type: string
+                example: W/"290-xf/GItdVrempeU4qcn6ZVDaF8Ko"
+            x-powered-by:
+              schema:
+                type: string
+                example: Express
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        accountId:
+                          type: number
+                          example: 10
+                        address:
+                          type: string
+                          example: 123 Binh Thanh
+                        date_of_birth:
+                          type: string
+                          example: '2002-01-01T00:00:00.000Z'
+                        email:
+                          type: string
+                          example: thinhhaphu@gmail.com
+                        full_name:
+                          type: string
+                          example: Thinh Ha Phu
+                        gender:
+                          type: string
+                          example: Nam
+                        id:
+                          type: number
+                          example: 2
+                        job_title:
+                          type: string
+                          example: Backend
+                        phone_number:
+                          type: string
+                          example: '090921321'
+                        profile_picture:
+                          type: string
+                          example: ''
+                        salary:
+                          type: number
+                          example: 1000000
+                        start_date:
+                          type: string
+                          example: '2023-03-03T00:00:00.000Z'
+                    example:
+                      - accountId: 10
+                        address: 123 Binh Thanh
+                        date_of_birth: '2002-01-01T00:00:00.000Z'
+                        email: thinhhaphu@gmail.com
+                        full_name: Thinh Ha Phu
+                        gender: Nam
+                        id: 2
+                        job_title: Backend
+                        phone_number: '090921321'
+                        profile_picture: ''
+                        salary: 1000000
+                        start_date: '2023-03-03T00:00:00.000Z'
+                      - accountId: 16
+                        address: 123 Binh Thanh
+                        date_of_birth: '2002-01-01T00:00:00.000Z'
+                        email: testhaphu@gmail.com
+                        full_name: Thinh Ha Phu
+                        gender: Nam
+                        id: 3
+                        job_title: Backend
+                        phone_number: '090921321'
+                        profile_picture: ''
+                        salary: 1000000
+                        start_date: '2023-03-03T00:00:00.000Z'
+                  from:
+                    type: string
+                    example: prisma
+                  page:
+                    type: string
+                    example: '1'
+                  perPage:
+                    type: string
+                    example: '10'
+                  totalCount:
+                    type: string
+                    example: '2'
+              examples:
+                Success:
+                  value:
+                    data:
+                      - accountId: 10
+                        address: 123 Binh Thanh
+                        date_of_birth: '2002-01-01T00:00:00.000Z'
+                        email: thinhhaphu@gmail.com
+                        full_name: Thinh Ha Phu
+                        gender: Nam
+                        id: 2
+                        job_title: Backend
+                        phone_number: '090921321'
+                        profile_picture: ''
+                        salary: 1000000
+                        start_date: '2023-03-03T00:00:00.000Z'
+                      - accountId: 16
+                        address: 123 Binh Thanh
+                        date_of_birth: '2002-01-01T00:00:00.000Z'
+                        email: testhaphu@gmail.com
+                        full_name: Thinh Ha Phu
+                        gender: Nam
+                        id: 3
+                        job_title: Backend
+                        phone_number: '090921321'
+                        profile_picture: ''
+                        salary: 1000000
+                        start_date: '2023-03-03T00:00:00.000Z'
+                    from: prisma
+                    page: '1'
+                    perPage: '10'
+                    totalCount: '2'
+      tags:
+        - Loan Service/Employees
+    post:
+      summary: http://localhost:3000/api/v1/employees
+      description: http://localhost:3000/api/v1/employees
+      operationId: httpLocalhost3000ApiV1Employees
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                address:
+                  type: string
+                  example: 123 Binh Thanh
+                date_of_birth:
+                  type: string
+                  example: '2002-01-01'
+                email:
+                  type: string
+                  example: thinhhaphu@gmail.com
+                full_name:
+                  type: string
+                  example: Thinh Ha Phu
+                gender:
+                  type: string
+                  example: Nam
+                job_title:
+                  type: string
+                  example: Backend
+                password:
+                  type: string
+                  example: '@1*Haphu'
+                phone_number:
+                  type: string
+                  example: '090921321'
+                profile_picture:
+                  type: string
+                  example: ''
+                salary:
+                  type: string
+                  example: '1000000'
+                school:
+                  type: string
+                  example: BKU
+                start_date:
+                  type: string
+                  example: '2023-03-03'
+                username:
+                  type: string
+                  example: haphuthinh_employee
+            example:
+              address: 123 Binh Thanh
+              date_of_birth: '2002-01-01'
+              email: thinhhaphu@gmail.com
+              full_name: Thinh Ha Phu
+              gender: Nam
+              job_title: Backend
+              password: '@1*Haphu'
+              phone_number: '090921321'
+              profile_picture: ''
+              salary: '1000000'
+              school: BKU
+              start_date: '2023-03-03'
+              username: haphuthinh_employee
+      responses:
+        '200':
+          description: Success
+          headers:
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: >-
+                  default-src 'self';base-uri 'self';font-src 'self' https:
+                  data:;form-action 'self';frame-ancestors 'self';img-src 'self'
+                  data:;object-src 'none';script-src 'self';script-src-attr
+                  'none';style-src 'self' https:
+                  'unsafe-inline';upgrade-insecure-requests
+            Cross-Origin-Opener-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Cross-Origin-Resource-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Origin-Agent-Cluster:
+              schema:
+                type: string
+                example: '?1'
+            Referrer-Policy:
+              schema:
+                type: string
+                example: no-referrer
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=15552000; includeSubDomains
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-DNS-Prefetch-Control:
+              schema:
+                type: string
+                example: 'off'
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            X-RateLimit-Limit:
+              schema:
+                type: string
+                example: '5'
+            X-RateLimit-Remaining:
+              schema:
+                type: string
+                example: '1'
+            X-RateLimit-Reset:
+              schema:
+                type: string
+                example: '1708308614'
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: '0'
+            connection:
+              schema:
+                type: string
+                example: close
+            content-length:
+              schema:
+                type: string
+                example: '292'
+            date:
+              schema:
+                type: string
+                example: Mon, 19 Feb 2024 01:55:53 GMT
+            etag:
+              schema:
+                type: string
+                example: W/"124-NGtI9okBtEJs5KIz2nZG9OnHzfs"
+            x-powered-by:
+              schema:
+                type: string
+                example: Express
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  accountId:
+                    type: number
+                    example: 16
+                  address:
+                    type: string
+                    example: 123 Binh Thanh
+                  date_of_birth:
+                    type: string
+                    example: '2002-01-01T00:00:00.000Z'
+                  email:
+                    type: string
+                    example: testhaphu@gmail.com
+                  full_name:
+                    type: string
+                    example: Thinh Ha Phu
+                  gender:
+                    type: string
+                    example: Nam
+                  id:
+                    type: number
+                    example: 3
+                  job_title:
+                    type: string
+                    example: Backend
+                  phone_number:
+                    type: string
+                    example: '090921321'
+                  profile_picture:
+                    type: string
+                    example: ''
+                  salary:
+                    type: number
+                    example: 1000000
+                  start_date:
+                    type: string
+                    example: '2023-03-03T00:00:00.000Z'
+              examples:
+                Success:
+                  value:
+                    accountId: 16
+                    address: 123 Binh Thanh
+                    date_of_birth: '2002-01-01T00:00:00.000Z'
+                    email: testhaphu@gmail.com
+                    full_name: Thinh Ha Phu
+                    gender: Nam
+                    id: 3
+                    job_title: Backend
+                    phone_number: '090921321'
+                    profile_picture: ''
+                    salary: 1000000
+                    start_date: '2023-03-03T00:00:00.000Z'
+        '500':
+          description: Username exists
+          headers:
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: >-
+                  default-src 'self';base-uri 'self';font-src 'self' https:
+                  data:;form-action 'self';frame-ancestors 'self';img-src 'self'
+                  data:;object-src 'none';script-src 'self';script-src-attr
+                  'none';style-src 'self' https:
+                  'unsafe-inline';upgrade-insecure-requests
+            Cross-Origin-Opener-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Cross-Origin-Resource-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Origin-Agent-Cluster:
+              schema:
+                type: string
+                example: '?1'
+            Referrer-Policy:
+              schema:
+                type: string
+                example: no-referrer
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=15552000; includeSubDomains
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-DNS-Prefetch-Control:
+              schema:
+                type: string
+                example: 'off'
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            X-RateLimit-Limit:
+              schema:
+                type: string
+                example: '5'
+            X-RateLimit-Remaining:
+              schema:
+                type: string
+                example: '4'
+            X-RateLimit-Reset:
+              schema:
+                type: string
+                example: '1708308614'
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: '0'
+            connection:
+              schema:
+                type: string
+                example: close
+            content-length:
+              schema:
+                type: string
+                example: '70'
+            date:
+              schema:
+                type: string
+                example: Mon, 19 Feb 2024 01:55:13 GMT
+            etag:
+              schema:
+                type: string
+                example: W/"46-psBHOhIwI6+K1hELq+Kck6shW80"
+            x-powered-by:
+              schema:
+                type: string
+                example: Express
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Username already exists
+                  status:
+                    type: string
+                    example: fail
+                  statusCode:
+                    type: number
+                    example: 500
+              examples:
+                Username exists:
+                  value:
+                    message: Username already exists
+                    status: fail
+                    statusCode: 500
+      tags:
+        - Loan Service/Employees
+
+# Loan package
+  /api/v1/loanpackage:
+    get:
+      summary: GET ALL
+      description: GET ALL
+      operationId: getAll
+      responses:
+        '200':
+          description: Success
+          headers:
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: >-
+                  default-src 'self';base-uri 'self';font-src 'self' https:
+                  data:;form-action 'self';frame-ancestors 'self';img-src 'self'
+                  data:;object-src 'none';script-src 'self';script-src-attr
+                  'none';style-src 'self' https:
+                  'unsafe-inline';upgrade-insecure-requests
+            Cross-Origin-Opener-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Cross-Origin-Resource-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Origin-Agent-Cluster:
+              schema:
+                type: string
+                example: '?1'
+            Referrer-Policy:
+              schema:
+                type: string
+                example: no-referrer
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=15552000; includeSubDomains
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-DNS-Prefetch-Control:
+              schema:
+                type: string
+                example: 'off'
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            X-RateLimit-Limit:
+              schema:
+                type: string
+                example: '5'
+            X-RateLimit-Remaining:
+              schema:
+                type: string
+                example: '4'
+            X-RateLimit-Reset:
+              schema:
+                type: string
+                example: '1708310120'
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: '0'
+            connection:
+              schema:
+                type: string
+                example: close
+            content-length:
+              schema:
+                type: string
+                example: '276'
+            date:
+              schema:
+                type: string
+                example: Mon, 19 Feb 2024 02:20:19 GMT
+            etag:
+              schema:
+                type: string
+                example: W/"114-JcAW/dXQOVVA/huKLkv1LJNA2Mk"
+            x-powered-by:
+              schema:
+                type: string
+                example: Express
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        description:
+                          type: string
+                          example: Thế chấp tài sản vay xe
+                        duration:
+                          type: number
+                          example: 31
+                        guarantee_type:
+                          type: string
+                          example: Thế chấp
+                        id:
+                          type: number
+                          example: 1
+                        interest_period:
+                          type: number
+                          example: 20
+                        interest_rate:
+                          type: string
+                          example: '25'
+                        max_money:
+                          type: string
+                          example: '600000000'
+                        min_money:
+                          type: string
+                          example: '100000000'
+                        name:
+                          type: string
+                          example: Mua xe
+                    example:
+                      - description: Thế chấp tài sản vay xe
+                        duration: 31
+                        guarantee_type: Thế chấp
+                        id: 1
+                        interest_period: 20
+                        interest_rate: '25'
+                        max_money: '600000000'
+                        min_money: '100000000'
+                        name: Mua xe
+                  message:
+                    type: string
+                    example: Done read all loan package
+                  status:
+                    type: string
+                    example: success
+              examples:
+                Success:
+                  value:
+                    data:
+                      - description: Thế chấp tài sản vay xe
+                        duration: 31
+                        guarantee_type: Thế chấp
+                        id: 1
+                        interest_period: 20
+                        interest_rate: '25'
+                        max_money: '600000000'
+                        min_money: '100000000'
+                        name: Mua xe
+                    message: Done read all loan package
+                    status: success
+      tags:
+        - Loan Service/Loan packages
+    post:
+      summary: New Request
+      description: New Request
+      operationId: newRequest
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                  example: Thế chấp tài sản vay xe
+                duration:
+                  type: string
+                  example: '31'
+                guarantee_type:
+                  type: string
+                  example: Thế chấp
+                interest_period:
+                  type: string
+                  example: '20'
+                interest_rate:
+                  type: string
+                  example: '25'
+                max_money:
+                  type: string
+                  example: '600000000'
+                min_money:
+                  type: string
+                  example: '100000000'
+                name:
+                  type: string
+                  example: Mua xe
+            example:
+              description: Thế chấp tài sản vay xe
+              duration: '31'
+              guarantee_type: Thế chấp
+              interest_period: '20'
+              interest_rate: '25'
+              max_money: '600000000'
+              min_money: '100000000'
+              name: Mua xe
+      responses:
+        '200':
+          description: ''
+      tags:
+        - Loan Service/Loan packages
+# Authenticate
+  /api/v1/login:
+    post:
+      summary: http://localhost:3000/api/v1/login
+      description: http://localhost:3000/api/v1/login
+      operationId: httpLocalhost3000ApiV1Login
+      parameters:
+        - name: ''
+          in: header
+          schema:
+            type: string
+            example: ''
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                password:
+                  type: string
+                  example: '@1Haphu'
+                username:
+                  type: string
+                  example: haphuthinh
+            example:
+              password: '@1Haphu'
+              username: haphuthinh
+      responses:
+        '200':
+          description: ''
+      tags:
+        - Loan Service/Authenticate
+# Schedule
+  /api/v1/worker/schedule:
+    get:
+      summary: GET ALL
+      description: GET ALL
+      operationId: getAll
+      responses:
+        '200':
+          description: Success
+          headers:
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: >-
+                  default-src 'self';base-uri 'self';font-src 'self' https:
+                  data:;form-action 'self';frame-ancestors 'self';img-src 'self'
+                  data:;object-src 'none';script-src 'self';script-src-attr
+                  'none';style-src 'self' https:
+                  'unsafe-inline';upgrade-insecure-requests
+            Cross-Origin-Opener-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Cross-Origin-Resource-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Origin-Agent-Cluster:
+              schema:
+                type: string
+                example: '?1'
+            Referrer-Policy:
+              schema:
+                type: string
+                example: no-referrer
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=15552000; includeSubDomains
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-DNS-Prefetch-Control:
+              schema:
+                type: string
+                example: 'off'
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            X-RateLimit-Limit:
+              schema:
+                type: string
+                example: '10'
+            X-RateLimit-Remaining:
+              schema:
+                type: string
+                example: '5'
+            X-RateLimit-Reset:
+              schema:
+                type: string
+                example: '1708310152'
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: '0'
+            connection:
+              schema:
+                type: string
+                example: close
+            content-length:
+              schema:
+                type: string
+                example: '171'
+            date:
+              schema:
+                type: string
+                example: Mon, 19 Feb 2024 02:22:34 GMT
+            etag:
+              schema:
+                type: string
+                example: W/"ab-2mxDxIQC1rAoiyxqesedTf3JIRY"
+            x-powered-by:
+              schema:
+                type: string
+                example: Express
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    adminId:
+                      type: number
+                      example: 5
+                    content:
+                      type: string
+                      example: ''
+                    createdAt:
+                      type: string
+                      example: '2024-02-19T02:22:12.208Z'
+                    id:
+                      type: number
+                      example: 30
+                    job:
+                      type: string
+                      example: mornitor
+                    scheduled:
+                      type: boolean
+                      example: true
+                    time:
+                      type: string
+                      example: '*/5 * * * * *'
+                    updatedAt:
+                      type: string
+                      example: '2024-02-19T02:22:12.208Z'
+                example:
+                  - adminId: 5
+                    content: ''
+                    createdAt: '2024-02-19T02:22:12.208Z'
+                    id: 30
+                    job: mornitor
+                    scheduled: true
+                    time: '*/5 * * * * *'
+                    updatedAt: '2024-02-19T02:22:12.208Z'
+              examples:
+                Success:
+                  value:
+                    - adminId: 5
+                      content: ''
+                      createdAt: '2024-02-19T02:22:12.208Z'
+                      id: 30
+                      job: mornitor
+                      scheduled: true
+                      time: '*/5 * * * * *'
+                      updatedAt: '2024-02-19T02:22:12.208Z'
+      tags:
+        - Worker Service/Schedule
+    post:
+      summary: CREATE NEW
+      description: CREATE NEW
+      operationId: createNew
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                adminId:
+                  type: string
+                  example: '5'
+                content:
+                  type: string
+                  example: ''
+                job:
+                  type: string
+                  example: mornitor
+                scheduled:
+                  type: string
+                  example: 'false'
+                time:
+                  type: string
+                  example: '*/5 * * * * *'
+            example:
+              adminId: '5'
+              content: ''
+              job: mornitor
+              scheduled: 'false'
+              time: '*/5 * * * * *'
+      responses:
+        '201':
+          description: Success
+          headers:
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: >-
+                  default-src 'self';base-uri 'self';font-src 'self' https:
+                  data:;form-action 'self';frame-ancestors 'self';img-src 'self'
+                  data:;object-src 'none';script-src 'self';script-src-attr
+                  'none';style-src 'self' https:
+                  'unsafe-inline';upgrade-insecure-requests
+            Cross-Origin-Opener-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Cross-Origin-Resource-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Origin-Agent-Cluster:
+              schema:
+                type: string
+                example: '?1'
+            Referrer-Policy:
+              schema:
+                type: string
+                example: no-referrer
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=15552000; includeSubDomains
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-DNS-Prefetch-Control:
+              schema:
+                type: string
+                example: 'off'
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            X-RateLimit-Limit:
+              schema:
+                type: string
+                example: '10'
+            X-RateLimit-Remaining:
+              schema:
+                type: string
+                example: '9'
+            X-RateLimit-Reset:
+              schema:
+                type: string
+                example: '1708310152'
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: '0'
+            connection:
+              schema:
+                type: string
+                example: close
+            content-length:
+              schema:
+                type: string
+                example: '169'
+            date:
+              schema:
+                type: string
+                example: Mon, 19 Feb 2024 02:20:51 GMT
+            etag:
+              schema:
+                type: string
+                example: W/"a9-S3yk5A5dduZyj2LIJYgzZA4K430"
+            x-powered-by:
+              schema:
+                type: string
+                example: Express
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  adminId:
+                    type: number
+                    example: 5
+                  content:
+                    type: string
+                    example: ''
+                  createdAt:
+                    type: string
+                    example: '2024-02-19T02:20:51.591Z'
+                  id:
+                    type: number
+                    example: 29
+                  job:
+                    type: string
+                    example: mornitor
+                  scheduled:
+                    type: boolean
+                    example: true
+                  time:
+                    type: string
+                    example: '*/5 * * * * *'
+                  updatedAt:
+                    type: string
+                    example: '2024-02-19T02:20:51.591Z'
+              examples:
+                Success:
+                  value:
+                    adminId: 5
+                    content: ''
+                    createdAt: '2024-02-19T02:20:51.591Z'
+                    id: 29
+                    job: mornitor
+                    scheduled: true
+                    time: '*/5 * * * * *'
+                    updatedAt: '2024-02-19T02:20:51.591Z'
+      tags:
+        - Worker Service/Schedule
+  /api/v1/worker/schedule/{id}:
+    delete:
+      summary: DELETE BY ID
+      description: DELETE BY ID
+      operationId: deleteById
+      parameters:
+        - name: id
+          example: 1
+          required: true
+          in: path
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          headers:
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: >-
+                  default-src 'self';base-uri 'self';font-src 'self' https:
+                  data:;form-action 'self';frame-ancestors 'self';img-src 'self'
+                  data:;object-src 'none';script-src 'self';script-src-attr
+                  'none';style-src 'self' https:
+                  'unsafe-inline';upgrade-insecure-requests
+            Cross-Origin-Opener-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Cross-Origin-Resource-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Origin-Agent-Cluster:
+              schema:
+                type: string
+                example: '?1'
+            Referrer-Policy:
+              schema:
+                type: string
+                example: no-referrer
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=15552000; includeSubDomains
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-DNS-Prefetch-Control:
+              schema:
+                type: string
+                example: 'off'
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            X-RateLimit-Limit:
+              schema:
+                type: string
+                example: '10'
+            X-RateLimit-Remaining:
+              schema:
+                type: string
+                example: '8'
+            X-RateLimit-Reset:
+              schema:
+                type: string
+                example: '1708310152'
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: '0'
+            connection:
+              schema:
+                type: string
+                example: close
+            content-length:
+              schema:
+                type: string
+                example: '169'
+            date:
+              schema:
+                type: string
+                example: Mon, 19 Feb 2024 02:21:40 GMT
+            etag:
+              schema:
+                type: string
+                example: W/"a9-S3yk5A5dduZyj2LIJYgzZA4K430"
+            x-powered-by:
+              schema:
+                type: string
+                example: Express
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  adminId:
+                    type: number
+                    example: 5
+                  content:
+                    type: string
+                    example: ''
+                  createdAt:
+                    type: string
+                    example: '2024-02-19T02:20:51.591Z'
+                  id:
+                    type: number
+                    example: 29
+                  job:
+                    type: string
+                    example: mornitor
+                  scheduled:
+                    type: boolean
+                    example: true
+                  time:
+                    type: string
+                    example: '*/5 * * * * *'
+                  updatedAt:
+                    type: string
+                    example: '2024-02-19T02:20:51.591Z'
+              examples:
+                Success:
+                  value:
+                    adminId: 5
+                    content: ''
+                    createdAt: '2024-02-19T02:20:51.591Z'
+                    id: 29
+                    job: mornitor
+                    scheduled: true
+                    time: '*/5 * * * * *'
+                    updatedAt: '2024-02-19T02:20:51.591Z'
+      tags:
+        - Worker Service/Schedule
